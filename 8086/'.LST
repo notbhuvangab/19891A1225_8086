@@ -1,0 +1,68 @@
+Microsoft (R) Macro Assembler Version 5.00                  1/7/21 23:44:21
+                                                             Page     1-1
+
+
+				;ALP for adding two 8 bit numbers 
+				ASSUME CS:CODE DS:DATA 
+add.asm(2): warning A4001: Extra characters on line
+				 
+ 0000				DATA SEGMENT			;beginning of d
+				ata segment 
+ 0000  02			OPR1 DB 02H				;operan
+				d 1 
+ 0001  03			OPR2 DB 03H				;operan
+				d 2 
+ 0002  ??			RESULT DB ?				;a byte
+				 of memory reserved for result 
+ 0003				DATA ENDS 
+				 
+ 0000				CODE SEGMENT 			;beginning of c
+				ode segment 
+ 0000				START: 
+ 0000  B8 ---- R		MOV AX,DATA  			;initiate data 
+				segment 
+ 0003  8E D8			MOV DS,AX 
+ 0005  A0 0000 R		MOV AL,OPR1 
+ 0008  8A 1E 0001 R		MOV BL,OPR2 
+ 000C  F8			CLC 
+ 000D  02 C3			ADD AL,BL				;AL<--A
+				L+BL 
+ 000F  BF 0002 R		MOV DI,OFFSET RESULT 	;LEA DI,RESULT 2000 
+ 0012  88 05			MOV [DI],AL 
+ 0014  B4 4C			MOV AH,4CH 
+ 0016  CD 21			INT 21H 
+ 0018				CODE ENDS 
+				END START 
+Microsoft (R) Macro Assembler Version 5.00                  1/7/21 23:44:21
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0018	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0003	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+OPR1 . . . . . . . . . . . . . .  	L BYTE	0000	DATA
+OPR2 . . . . . . . . . . . . . .  	L BYTE	0001	DATA
+
+RESULT . . . . . . . . . . . . .  	L BYTE	0002	DATA
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  add		
+
+
+     23 Source  Lines
+     23 Total   Lines
+      8 Symbols
+
+  51194 + 465350 Bytes symbol space free
+
+      1 Warning Errors
+      0 Severe  Errors

@@ -1,0 +1,19 @@
+;Assembly Language Prgram to display welcome message
+
+ASSUME CS:CODE, DS:DATA
+
+DATA SEGMENT  		; Beginning of Data Segment
+MSG DB "WELCOME TO ASSEMBLY LANGUAGE PROGRAMMING$"
+DATA ENDS
+
+CODE SEGMENT
+START:
+MOV AX,DATA
+MOV DS,AX			;Initialize the data segment
+LEA DX,MSG			;Offset Address of the msg into DX, (MOV DX,OFFSET MSG)
+MOV AH,09H 			;LOAD 09H into AH
+INT 21H				;INVOKE DOS FUNCTION CALL 09H
+MOV AH,4CH
+INT 21H				;CONTROL RETURNS DOS PROMPT
+CODE ENDS
+END START			
